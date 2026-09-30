@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>mfe-perfil (modo independiente)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #fafafa; }
+    /* Regla "agresiva" a propósito: ¿afecta al h2 dentro del Shadow DOM? */
+    h2 { color: red; font-family: 'Times New Roman', serif; }
+  </style>
+</head>
+<body>
+  <h2>Este h2 está fuera del componente (debe verse rojo)</h2>
+  <mfe-perfil></mfe-perfil>
+  <p id="estado"></p>
+
+  <script src="perfil.js"></script>
+  <script>
+    window.addEventListener('usuario:cambio', function (e) {
+      document.getElementById('estado').textContent = 'usuario:cambio → ' + JSON.stringify(e.detail);
+    });
+  </script>
+</body>
+</html>
