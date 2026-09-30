@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>mfe-catalogo (modo independiente)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #fafafa; }
+    .banda { background: #fff3c4; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="banda">Modo independiente: el equipo de Catálogo prueba su micro frontend sin el contenedor.</div>
+  <div id="raiz-local"></div>
+  <h3>Eventos publicados</h3>
+  <ul id="eventos"></ul>
+
+  <script src="catalogo.js"></script>
+  <script>
+    window.renderCatalogo('raiz-local');
+    // Simulamos a los "consumidores" del evento para verificar el contrato
+    window.addEventListener('carrito:agregar', function (e) {
+      const li = document.createElement('li');
+      li.textContent = 'carrito:agregar → ' + JSON.stringify(e.detail);
+      document.getElementById('eventos').appendChild(li);
+    });
+  </script>
+</body>
+</html>

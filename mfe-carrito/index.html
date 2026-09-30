@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>mfe-carrito (modo independiente)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #fafafa; }
+    .banda { background: #fff3c4; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="banda">
+    Modo independiente: simulamos el evento del catálogo con estos botones.
+    <button onclick="simular(101, 'Plato de prueba A', 10000)">Simular plato A</button>
+    <button onclick="simular(102, 'Plato de prueba B', 2500)">Simular plato B</button>
+  </div>
+  <div id="raiz-local"></div>
+  <p id="estado"></p>
+
+  <script src="carrito.js"></script>
+  <script>
+    function simular(id, nombre, precio) {
+      window.dispatchEvent(new CustomEvent('carrito:agregar', { detail: { id, nombre, precio } }));
+    }
+    window.addEventListener('carrito:actualizado', function (e) {
+      document.getElementById('estado').textContent = 'carrito:actualizado → ' + JSON.stringify(e.detail);
+    });
+    window.renderCarrito('raiz-local');
+  </script>
+</body>
+</html>
