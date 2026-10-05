@@ -16,7 +16,13 @@ window.REGISTRO_MFE = {
   '/perfil': {
     nombre: 'Perfil',
     url: 'http://localhost:8083/perfil.js',
-    tipo: 'webcomponent',      // define la etiqueta <mfe-perfil>
+    tipo: 'funcion',      // define la etiqueta <mfe-perfil>
     etiqueta: 'mfe-perfil'
+  },
+    '/pedidos': {
+    nombre: 'Pedidos',
+    url: 'http://localhost:8084/pedidos.js',
+    tipo: 'funcion',
+    dependencias: ['https://unpkg.com/vue@3/dist/vue.global.js']
   }
 };

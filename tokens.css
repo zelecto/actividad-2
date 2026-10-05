@@ -1,0 +1,22 @@
+/* tokens.css — tokens de diseño compartidos. Solo CSS, sin JavaScript. */
+:root {
+  --color-primary: #0b4f8a;
+  --color-primary-hover: #1283c8;
+  --color-success: #1b7a3e;
+  --color-success-soft: #eaf6ea;
+  --color-warning: #f2c200;
+  --color-danger: #a12a1e;
+  --color-danger-soft: #fdecea;
+  --color-text: #222;
+  --color-muted: #777;
+  --color-border: #dde3ea;
+  --color-surface: #fff;
+  --color-background: #f4f6f8;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mfe-pedidos (modo independiente)</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: var(--color-background); }
+    .banda { background: #fff3c4; padding: 8px 12px; margin-bottom: 16px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="banda">
+    Modo independiente: usa el botón para simular el evento pedido:confirmado.
+    <button onclick="simularPedido()">Simular pedido</button>
+  </div>
+  <div id="raiz-local"></div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="pedidos.js"></script>
+  <script>
+    function simularPedido() {
+      window.dispatchEvent(new CustomEvent('pedido:confirmado', {
+        detail: {
+          id: 'PED-DEMO',
+          total: 59000,
+          items: [
+            { id: 1, nombre: 'Chivo guisado', precio: 28000, cantidad: 1, subtotal: 28000 },
+            { id: 4, nombre: 'Arepa de huevo', precio: 6000, cantidad: 2, subtotal: 12000 },
+            { id: 6, nombre: 'Jugo de corozo', precio: 5000, cantidad: 1, subtotal: 5000 },
+            { id: 8, nombre: 'Dulce de leche cortada', precio: 7000, cantidad: 2, subtotal: 14000 }
+          ],
+          version: '2.0.0'
+        }
+      }));
+    }
+    window.renderPedidos('raiz-local');
+  </script>
+</body>
+</html>

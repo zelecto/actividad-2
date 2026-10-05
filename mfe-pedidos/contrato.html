@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato - Pedidos</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #f4f6f8; color: #222; }
+    .ok { color: #1b7a3e; background: #eaf6ea; padding: 12px; border-radius: 6px; }
+    .error { color: #a12a1e; background: #fdecea; padding: 12px; border-radius: 6px; }
+    code { background: #eee; padding: 2px 5px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>Contrato público: Pedidos</h1>
+  <div id="resultado">Verificando…</div>
+  <script src="pedidos.js"></script>
+  <script>
+    (function () {
+      const requerido = ['renderPedidos', 'unmountPedidos'];
+      const faltantes = requerido.filter(function (nombre) {
+        return typeof window[nombre] !== 'function';
+      });
+      const resultado = document.getElementById('resultado');
+
+      if (faltantes.length === 0) {
+        resultado.className = 'ok';
+        resultado.textContent = '✓ Contrato válido: expone ' + requerido.join(' y ') + '.';
+      } else {
+        resultado.className = 'error';
+        resultado.innerHTML = '✗ Contrato inválido. Faltan: <code>' + faltantes.join('</code>, <code>') + '</code>.';
+      }
+    })();
+  </script>
+</body>
+</html>

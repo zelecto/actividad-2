@@ -3,7 +3,7 @@
 // Escucha: 'carrito:agregar' { id, nombre, precio }
 // Publica: 'carrito:actualizado' { cantidad, total }
 (function () {
-  const VERSION = '1.0.0';
+  const VERSION = '2.0.0';
   const pesos = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
 
   const CSS = `
