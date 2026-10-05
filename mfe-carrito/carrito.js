@@ -83,8 +83,28 @@
       publicarEstado();
       pintar();
     } else if (e.target.matches('.car-confirmar')) {
-      mensaje = 'Pedido confirmado por ' + pesos.format(total()) + '. ¡Gracias!';
+      const pedido = {
+        id: Date.now(),
+        total: total(),
+        items: items.map(function (it) {
+          return {
+            id: it.id,
+            nombre: it.nombre,
+            precio: it.precio,
+            cantidad: it.cantidad
+          };
+        }),
+        version: VERSION
+      };
+
+      window.dispatchEvent(new CustomEvent('pedido:confirmado', {
+        detail: pedido
+      }));
+
+      mensaje = 'Pedido confirmado por ' + pesos.format(pedido.total) + '. ¡Gracias!';
+
       items.length = 0;
+
       publicarEstado();
       pintar();
     }
